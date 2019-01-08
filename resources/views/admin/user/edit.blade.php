@@ -39,9 +39,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <label for="email" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                {!! Form::text('password', null, ['class' => 'form-control', 'id' => 'password']) !!}
+                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password']) !!}
                             </div>
                         </div>
 
