@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 
 class DashboardController extends Controller
@@ -26,6 +25,12 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('dashboard')->with('posts', $user->posts);
+        $data = [
+            'user_id'   => $user_id,
+            'user'      => $user,
+            'title'     => $title = 'Welcome to the OutLawz Dashboard',
+            'posts'     => $user->posts
+        ];
+        return view('dashboard')->with('data', $data);
     }
 }

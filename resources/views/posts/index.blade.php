@@ -2,24 +2,22 @@
 
 @section('content')
     <h1>Posts</h1>
-    @if(count($posts) > 0)
-        <div class="row">
-            @foreach($posts as $post)
-                <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h3>
-                            <small>Written on {{ $post->created_at }} by {{ $post->user['name'] }}</small>
-                        </div>
+    <div class="row">
+        @forelse($posts as $post)
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h3>
+                        <small>Written on {{ $post->created_at }} by {{ $post->user['name'] }}</small>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        @if(count($posts) >= 10)
-            <hr>
-            {{ $posts }}
-        @endif
-    @else
-        <p>No posts found</p>
+            </div>
+        @empty
+            <p>No posts found</p>
+        @endforelse
+    </div>
+    @if(count($posts) >= 2)
+        <hr>
+        {{ $posts }}
     @endif
 @endsection
